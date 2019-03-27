@@ -11,10 +11,10 @@ public class Parser extends OptionsPOJO {
         try {
             parser.parseArgument(args);
         } catch (CmdLineException e) {
-            System.err.println(e.getMessage());
             System.err.println("Java SampleMain [options...] arguments...");
             parser.printUsage(System.err);
             System.err.println();
+            System.err.println(e.getMessage());
         }
     }
 }
