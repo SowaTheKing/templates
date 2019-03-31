@@ -7,7 +7,6 @@ import sowa.the.king.User;
 
 import java.io.*;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -17,9 +16,6 @@ public class WindowsRecon extends Thread {
 
     private static transient Net net = new Net();
     private static transient Netsh netsh = new Netsh();
-
-
-
 
     public List<User> getUserNames() throws IOException {
         return net.getUserNames();

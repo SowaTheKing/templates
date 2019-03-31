@@ -1,7 +1,5 @@
 package sowa.the.king.Parser;
 
-import java.io.Serializable;
-
 public class WlanProfile {
     private String type;
     private String name;
@@ -106,17 +104,17 @@ public class WlanProfile {
     @Override
     public String toString() {
         return "WlanProfile{" +
-                "type='" + type + '\'' +
-                ", name='" + name + '\'' +
-                ", numberOfSSIDs='" + numberOfSSIDs + '\'' +
-                ", SSIDname='" + SSIDname + '\'' +
-                ", networkType='" + networkType + '\'' +
-                ", radioType='" + radioType + '\'' +
-                ", vendorExtension='" + vendorExtension + '\'' +
-                ", authentication='" + authentication + '\'' +
-                ", cipher='" + cipher + '\'' +
-                ", securityKey='" + securityKey + '\'' +
-                ", keyContent='" + keyContent + '\'' +
-                '}';
+                "\r\n\ttype='" + type + '\'' +
+                "\r\n\t, name='" + name + '\'' +
+                "\r\n\t, numberOfSSIDs='" + numberOfSSIDs + '\'' +
+                "\r\n\t, SSIDname='" + SSIDname + '\'' +
+                "\r\n\t, networkType='" + networkType + '\'' +
+                "\r\n\t, radioType='" + radioType + '\'' +
+                "\r\n\t, vendorExtension='" + vendorExtension + '\'' +
+                "\r\n\t, authentication='" + authentication + '\'' +
+                "\r\n\t, cipher='" + cipher + '\'' +
+                "\r\n\t, securityKey='" + securityKey + '\'' +
+                "\r\n\t, keyContent='" + keyContent + '\'' +
+                '}' + "\r\n\r\n\r\n";
     }
 }
