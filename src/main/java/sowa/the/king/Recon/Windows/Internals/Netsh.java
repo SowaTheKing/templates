@@ -1,8 +1,9 @@
-package sowa.the.king.Recon.Windows;
+package sowa.the.king.Recon.Windows.Internals;
 
 import sowa.the.king.Parser.CommandLineOutputParser;
 import sowa.the.king.Parser.CommandType;
 import sowa.the.king.Parser.WlanProfile;
+import sowa.the.king.Recon.Windows.WindowsRecon;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -25,10 +26,38 @@ public class Netsh {
     }
 
     private WlanProfile parseWlanProfile(List<String> input) {
+        WlanProfile wlanProfile = new WlanProfile();
         for (String line : input.subList(9, 39)) {
             System.out.println(line);
+            buildWlanProfileFromStrings(wlanProfile, line);
         }
-        return new WlanProfile();
+        return wlanProfile;
+    }
+
+    private void buildWlanProfileFromStrings(WlanProfile wlanProfile, String line) {
+        String[] pair = line.split(":");
+        String key;
+        String value;
+        try {
+            key = pair[0].trim();
+            value = pair[1].trim();
+        } catch (IndexOutOfBoundsException e) {
+            return;
+        }
+
+        switch (key) {
+            case "Type" : wlanProfile.setType(value);
+            case "Name" : wlanProfile.setName(value);
+            case "Number of SSIDs" : wlanProfile.setNumberOfSSIDs(value);
+            case "SSID name" : wlanProfile.setSSIDname(value);
+            case "Network type" : wlanProfile.setNetworkType(value);
+            case "Radio type" : wlanProfile.setRadioType(value);
+            case "Vendor extension" : wlanProfile.setVendorExtension(value);
+            case "Authentication" : wlanProfile.setAuthentication(value);
+            case "Cipher" : wlanProfile.setCipher(value);
+            case "Security key" : wlanProfile.setSecurityKey(value);
+            case "Key Content" : wlanProfile.setKeyContent(value);
+        }
     }
 
     private List<String> getNetshProfiles() throws IOException {

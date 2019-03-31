@@ -1,8 +1,8 @@
 package sowa.the.king.Recon.Windows;
 
-import sowa.the.king.Parser.CommandLineOutputParser;
-import sowa.the.king.Parser.CommandType;
 import sowa.the.king.Parser.WlanProfile;
+import sowa.the.king.Recon.Windows.Internals.Net;
+import sowa.the.king.Recon.Windows.Internals.Netsh;
 import sowa.the.king.User;
 
 import java.io.BufferedReader;
@@ -14,24 +14,17 @@ import java.util.List;
 
 public class WindowsRecon {
 
-    private static final String[] NET_USER_COMMAND = {"cmd.exe", "/c", "net", "user"};
-    private static final String[] NETSH_WLAN_SHOW_PROFILES_COMMAND = {"cmd.exe", "/c", "netsh", "wlan", "show", "profiles"};
-    private static final String[] NETSH_WLAN_GET_PROFILE = {"cmd.exe", "/c", "netsh", "wlan", "show", "profile"};
+    private static transient Net net = new Net();
+    private static transient Netsh netsh = new Netsh();
 
-    public List<String> getNetshProfiles() throws IOException {
-        CommandLineOutputParser commandLineOutputParser = new CommandLineOutputParser();
-        List<String> output = runCommandCaptureOutput(NETSH_WLAN_SHOW_PROFILES_COMMAND);
-        return (List<String>) commandLineOutputParser.parse(CommandType.NETSH_WLAN_SHOW_PROFILES, output);
-    }
+
+
 
     public List<User> getUserNames() throws IOException {
-        CommandLineOutputParser commandLineOutputParser = new CommandLineOutputParser();
-        List<String> output = runCommandCaptureOutput(NET_USER_COMMAND);
-        return (List<User>) commandLineOutputParser.parse(CommandType.NET_USER, output);
+        return net.getUserNames();
     }
 
-    public List<WlanProfile> getNetshProfilesLayer() throws IOException {
-        Netsh netsh = new Netsh();
+    public List<WlanProfile> getWifiProfiles() throws IOException {
         return netsh.getWlanProfiles();
     }
 

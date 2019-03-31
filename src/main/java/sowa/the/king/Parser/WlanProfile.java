@@ -1,29 +1,17 @@
 package sowa.the.king.Parser;
 
 public class WlanProfile {
-    private String version;
     private String type;
     private String name;
-    private String[] controlOptions;
-
     private String numberOfSSIDs;
     private String SSIDname;
     private String networkType;
     private String radioType;
     private String vendorExtension;
-
     private String authentication;
     private String cipher;
     private String securityKey;
     private String keyContent;
-
-    public String getVersion() {
-        return version;
-    }
-
-    public void setVersion(String version) {
-        this.version = version;
-    }
 
     public String getType() {
         return type;
@@ -39,14 +27,6 @@ public class WlanProfile {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String[] getControlOptions() {
-        return controlOptions;
-    }
-
-    public void setControlOptions(String[] controlOptions) {
-        this.controlOptions = controlOptions;
     }
 
     public String getNumberOfSSIDs() {

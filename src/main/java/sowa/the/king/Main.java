@@ -1,6 +1,5 @@
 package sowa.the.king;
 
-import sowa.the.king.Parser.CommandLineOutputParser;
 import sowa.the.king.Parser.Parser;
 import sowa.the.king.Parser.WlanProfile;
 import sowa.the.king.Recon.OperatingSystemPOJO;
@@ -24,8 +23,8 @@ public class Main {
         ReconDisplay.displayOptions(parser);
 
         WindowsRecon windowsRecon = new WindowsRecon();
-        List<WlanProfile> netshProfiles = windowsRecon.getNetshProfilesLayer();
-        System.out.println(netshProfiles);
+        List<WlanProfile> netshProfiles = windowsRecon.getWifiProfiles();
+        System.out.println(netshProfiles.get(0).getKeyContent());
 
 
     }
