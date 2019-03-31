@@ -24,8 +24,8 @@ public class Main {
 
         WindowsRecon windowsRecon = new WindowsRecon();
         List<WlanProfile> netshProfiles = windowsRecon.getWifiProfiles();
-        System.out.println(netshProfiles.get(0).getKeyContent());
 
-
+        Thread t1 = new WindowsRecon();
+        t1.start();
     }
 }

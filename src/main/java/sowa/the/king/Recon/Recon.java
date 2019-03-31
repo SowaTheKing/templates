@@ -1,23 +1,8 @@
 package sowa.the.king.Recon;
 
-import sowa.the.king.Parser.CommandLineOutputParser;
-import sowa.the.king.Parser.CommandType;
-import sowa.the.king.Parser.WlanProfile;
-import sowa.the.king.User;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Properties;
 
 public class Recon {
-
-    private static final String[] NET_USER_COMMAND = {"cmd.exe", "/c", "net", "user"};
-    private static final String[] NETSH_WLAN_SHOW_PROFILES_COMMAND = {"cmd.exe", "/c", "netsh", "wlan", "show", "profiles"};
-    private static final String[] NETSH_WLAN_GET_PROFILE = {"cmd.exe", "/c", "netsh", "wlan", "show", "profile"};
 
     public OperatingSystemPOJO getOs() {
         return getOsPOJO();

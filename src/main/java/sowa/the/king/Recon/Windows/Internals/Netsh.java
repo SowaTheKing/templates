@@ -28,7 +28,6 @@ public class Netsh {
     private WlanProfile parseWlanProfile(List<String> input) {
         WlanProfile wlanProfile = new WlanProfile();
         for (String line : input.subList(9, 39)) {
-            System.out.println(line);
             buildWlanProfileFromStrings(wlanProfile, line);
         }
         return wlanProfile;

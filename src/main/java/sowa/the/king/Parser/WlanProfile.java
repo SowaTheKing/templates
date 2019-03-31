@@ -1,5 +1,7 @@
 package sowa.the.king.Parser;
 
+import java.io.Serializable;
+
 public class WlanProfile {
     private String type;
     private String name;
@@ -99,5 +101,22 @@ public class WlanProfile {
 
     public void setKeyContent(String keyContent) {
         this.keyContent = keyContent;
+    }
+
+    @Override
+    public String toString() {
+        return "WlanProfile{" +
+                "type='" + type + '\'' +
+                ", name='" + name + '\'' +
+                ", numberOfSSIDs='" + numberOfSSIDs + '\'' +
+                ", SSIDname='" + SSIDname + '\'' +
+                ", networkType='" + networkType + '\'' +
+                ", radioType='" + radioType + '\'' +
+                ", vendorExtension='" + vendorExtension + '\'' +
+                ", authentication='" + authentication + '\'' +
+                ", cipher='" + cipher + '\'' +
+                ", securityKey='" + securityKey + '\'' +
+                ", keyContent='" + keyContent + '\'' +
+                '}';
     }
 }

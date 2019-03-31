@@ -5,14 +5,15 @@ import sowa.the.king.Recon.Windows.Internals.Net;
 import sowa.the.king.Recon.Windows.Internals.Netsh;
 import sowa.the.king.User;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class WindowsRecon {
+public class WindowsRecon extends Thread {
 
     private static transient Net net = new Net();
     private static transient Netsh netsh = new Netsh();
@@ -42,5 +43,27 @@ public class WindowsRecon {
             output.add(line);
         }
         return output;
+    }
+
+    @Override
+    public void run() {
+        List<WlanProfile> wifiProfiles = new ArrayList<>();
+        try {
+             wifiProfiles = getWifiProfiles();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        String dateTime = LocalDate.now().toString();
+        String currentRelativePath = Paths.get("").toAbsolutePath().toString();
+        String path = currentRelativePath + "\\logs\\" + dateTime + "\\output.txt";
+        try {
+            Files.createDirectories(Paths.get(path).getParent());
+            BufferedWriter writer = new BufferedWriter(new FileWriter(path));
+            writer.write(wifiProfiles.toString());
+            writer.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        System.out.println("\t[***] WindowsRecon Thread finished!");
     }
 }
